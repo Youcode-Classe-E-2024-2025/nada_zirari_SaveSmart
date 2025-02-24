@@ -27,4 +27,21 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('success', 'Inscription réussie. Connectez-vous maintenant.');
     }
+    public function showLoginForm() {
+        return view('auth.login');
+    }
+    public function login(Request $request) {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('dashboard');
+        }
+
+        return back()->withErrors(['email' => 'Identifiants invalides'])->onlyInput('email');
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }
