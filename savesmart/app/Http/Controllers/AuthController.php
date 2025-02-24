@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function showRegisterForm() {
-        return view('auth.register');
+        return view('register');
     }
 
     public function register(Request $request) {
@@ -28,7 +28,7 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'Inscription réussie. Connectez-vous maintenant.');
     }
     public function showLoginForm() {
-        return view('auth.login');
+        return view('login');
     }
     public function login(Request $request) {
         $credentials = $request->only('email', 'password');
