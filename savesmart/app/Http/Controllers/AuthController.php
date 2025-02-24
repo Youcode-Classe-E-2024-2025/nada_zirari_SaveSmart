@@ -40,8 +40,17 @@ class AuthController extends Controller
         return back()->withErrors(['email' => 'Identifiants invalides'])->onlyInput('email');
     }
 
-    public function logout() {
-        Auth::logout();
-        return redirect()->route('login');
-    }
+    // public function logout() {
+    //     Auth::logout();
+    //     return redirect()->route('login');
+    // }
+    public function logout(Request $request)
+{
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect()->route('login')->with('success', 'Déconnexion réussie.');
+}
+
 }
