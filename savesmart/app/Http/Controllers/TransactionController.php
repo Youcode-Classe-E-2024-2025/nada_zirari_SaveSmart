@@ -22,7 +22,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('transactions.create');
     }
 
     /**
@@ -30,7 +30,22 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'type' => 'required|in:revenu,dépense',
+            'title' => 'required|string',
+            'amount' => 'required|numeric',
+            'date' => 'required|date',
+        ]);
+
+        Transaction::create([
+            'user_id' => Auth::id(),
+            'type' => $request->type,
+            'title' => $request->title,
+            'amount' => $request->amount,
+            'date' => $request->date,
+        ]);
+
+        return redirect()->route('transactions.index')->with('success', 'Transaction ajoutée avec succès.');
     }
 
     /**
