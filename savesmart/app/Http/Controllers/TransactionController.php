@@ -59,24 +59,38 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Transaction $transaction)
     {
-        //
+        $this->authorize('update', $transaction);
+        return view('transactions.edit', compact('transaction'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Transaction $transaction)
     {
-        //
+        $this->authorize('update', $transaction);
+
+        $request->validate([
+            'title' => 'required|string',
+            'amount' => 'required|numeric',
+            'date' => 'required|date',
+        ]);
+
+        $transaction->update($request->only('title', 'amount', 'date'));
+
+        return redirect()->route('transactions.index')->with('success', 'Transaction mise à jour.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Transaction $transaction)
     {
-        //
+        $this->authorize('delete', $transaction);
+        $transaction->delete();
+
+        return redirect()->route('transactions.index')->with('success', 'Transaction supprimée.');
     }
 }
