@@ -2,6 +2,8 @@
 
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\DashboardController;
+
 
 use Illuminate\Http\Request;
 
