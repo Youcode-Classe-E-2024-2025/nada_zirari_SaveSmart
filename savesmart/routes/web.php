@@ -19,7 +19,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Routes protégées par auth middleware
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::resource('transactions', TransactionController::class);
+    Route::get('/profiles', [ProfileController::class, 'index'])->name('profiles.index');
+    Route::get('/profile/select/{id}', [ProfileController::class, 'select'])->name('profile.select');
+    Route::get('/profiles/create', [ProfileController::class, 'create'])->name('profiles.create');
+    Route::post('/profiles', [ProfileController::class, 'store'])->name('profiles.store');
+
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::get('/transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
+    Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
 });
