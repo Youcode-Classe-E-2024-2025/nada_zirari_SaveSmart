@@ -11,19 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::create('profiles', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('name'); // Nom du profil (ex: "Famille Dupont")
-        //     $table->timestamps();
-        // });
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // L'utilisateur principal
-            $table->string('name'); // Nom du profil
-            $table->string('avatar')->nullable(); // Avatar facultatif
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('name');
             $table->timestamps();
-        
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

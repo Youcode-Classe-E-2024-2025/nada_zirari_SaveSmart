@@ -14,23 +14,18 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('type'); // revenu ou dépense
+            $table->enum('type', ['revenu', 'dépense']);
             $table->string('title');
             $table->decimal('amount', 10, 2);
             $table->date('date');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->enum('type', ['revenu', 'dépense']);
-            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('transactions');
     }
-};
+}

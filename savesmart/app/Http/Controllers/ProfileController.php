@@ -19,7 +19,7 @@ class ProfileController extends Controller
     // Sélectionner un profil actif
     public function select($id)
     {
-        $profile = Profile::where('user_id', Auth::id())->findOrFail($id);
+        $profile = Profile::where('user_id', "=" , Auth::id())->findOrFail($id);
         session(['active_profile_id' => $profile->id]);
 
         return redirect()->route('dashboard')->with('success', "Profil '{$profile->name}' sélectionné !");

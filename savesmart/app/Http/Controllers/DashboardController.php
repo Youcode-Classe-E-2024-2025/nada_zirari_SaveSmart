@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\DashboardController;
-
+use App\Models\Profile;
 
 use Illuminate\Http\Request;
 

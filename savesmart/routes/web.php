@@ -3,9 +3,9 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
+
 Route::get('/', function () {
-    return view('registe"');
+    return view('register');
 });
 
 
