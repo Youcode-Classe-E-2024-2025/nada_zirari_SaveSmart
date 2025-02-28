@@ -5,10 +5,12 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\Profile;
 
 class AuthController extends Controller
 {
+
+    
     public function showRegisterForm() {
         return view('register');
     }
@@ -19,16 +21,26 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
-        User::create([
+    
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
+    
+        // Create default profile for the new user
+        Profile::create([
+            'user_id' => $user->id,
+            'name' => $user->name . "'s Profile",
+            'is_default' => true
+        ]);
+    
         return redirect()->route('login')->with('success', 'Inscription réussie. Connectez-vous maintenant.');
     }
     public function showLoginForm() {
-        return view('login');
+     
+        $profiles = Profile::all();
+        return view('login', compact('profiles'));
     }
     public function login(Request $request) {
         $credentials = $request->only('email', 'password');

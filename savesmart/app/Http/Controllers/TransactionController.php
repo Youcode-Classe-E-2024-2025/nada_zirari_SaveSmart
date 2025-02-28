@@ -129,6 +129,7 @@ class TransactionController extends Controller
          }
  
          Transaction::create([
+             'user_id' => auth()->user()->id,
              'profile_id' => $activeProfileId,
              'description' => $request->description,
              'amount' => $request->amount,
@@ -138,4 +139,4 @@ class TransactionController extends Controller
          return redirect()->route('transactions.index')->with('success', 'Transaction ajoutée avec succès.');
      }
  }
-}
+

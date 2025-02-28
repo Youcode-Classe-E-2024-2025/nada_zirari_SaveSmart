@@ -3,11 +3,14 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
+
+
 
 Route::get('/', function () {
-    return view('register');
+    $profiles = \App\Models\Profile::all();
+    return view('login', compact('profiles'));
 });
-
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
