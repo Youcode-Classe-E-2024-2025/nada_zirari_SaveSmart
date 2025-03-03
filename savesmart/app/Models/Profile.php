@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,8 +9,9 @@ class Profile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'name', 'avatar'];
+    protected $fillable = ['user_id', 'name','description','pin', 'avatar'];
 
+    // Relation avec l'utilisateur principal
     public function user()
     {
         return $this->belongsTo(User::class);
