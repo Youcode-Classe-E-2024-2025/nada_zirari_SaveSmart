@@ -25,7 +25,7 @@
       <!-- Desktop Menu -->
       <div class="hidden lg:flex lg:flex-1 lg:gap-x-12 lg:items-center lg:justify-between" id="desktop-menu">
         <div class="lg:flex lg:flex-1 lg:gap-x-12 ">
-          <a href="/" class="text-sm font-semibold text-gray-900 hover:text-green-600 transition-colors">Home</a>
+          <a href="/" class="text-sm font-semibold text-gray-900 hover:text-green-600 py-2 px-5   bg-white rounded-full transition-colors">Home</a>
           {{-- <a href="/books" class="text-sm font-semibold text-gray-900 hover:text-green-600 transition-colors">Books</a> --}}
         </div>
           <div class="flex gap-2">
@@ -34,7 +34,7 @@
           <a href="/register" class=" bg-green-600 hover:bg-green-700 text-white py-1 px-6  border-green-700 border-2 rounded-full shadow-md transition duration-300 ease-in-out">register  </a>
           @endguest
           @auth
-              <a href="{{ route('profiles.index')}}" class=" bg-white text-gray-900 py-1 px-5  transition duration-300 ease-in-out hover:text-green-600 ">Profiles</a>
+              <a href="{{ route('profiles.index')}}" class=" bg-white text-gray-900 py-1 px-5  rounded-full transition duration-300 ease-in-out hover:text-green-600 ">Profiles</a>
           <a href="/logout" class=" bg-white text-gray-900 py-1 px-5  rounded-full border-green-700 border-2 shadow-md transition duration-300 ease-in-out hover:text-green-600 ">Log out <span aria-hidden="true">&rarr;</span></a>
           @endauth
         </div>

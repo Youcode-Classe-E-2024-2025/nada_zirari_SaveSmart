@@ -7,8 +7,10 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/app.css', 'resources/js/app.js'])
         @endif
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-{{ $head }}
+        {{ $head ?? '' }}
 </head>
 <body class="bg-gray-50">
     @if(session('error'))
@@ -44,7 +46,7 @@
             document.getElementById('mobile-menu').classList.add('-translate-x-full');
         });
     </script>
-    {{ $script }} 
+   {{ $script ?? '' }}
 </body>
 </html>
 

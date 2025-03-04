@@ -11,9 +11,12 @@ class SavingsGoalController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+   
     {
-        return view('dashboard.goals');
+        $savingsGoals = SavingsGoal::where('user_id', auth()->id())->get();
+        return view('home', compact('savingsGoals'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -27,9 +30,18 @@ class SavingsGoalController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'target_amount' => 'required|numeric|min:0',
+        'current_amount' => 'required|numeric|min:0',
+    ]);
+
+    $validated['user_id'] = auth()->id();
+    SavingsGoal::create($validated);
+
+    return redirect()->back()->with('success', 'Objectif d\'épargne créé avec succès!');
+}
 
     /**
      * Display the specified resource.

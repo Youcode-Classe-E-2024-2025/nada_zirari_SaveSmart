@@ -2,7 +2,9 @@
         <div class="hidden md:flex md:flex-shrink-0">
             <div class="flex flex-col w-64 bg-green-700 text-primary-600">
                 <div class="p-6">
+                <a href="{{ route('profiles.index') }}" class="flex items-center">
                     <h1 class="text-2xl font-bold text-primary-700">SaveSmart</h1>
+                    </a>   
                     <p class="text-sm text-black">Gestion financière</p>
                 </div>
                 <div class="flex flex-col flex-1 overflow-y-auto">
@@ -23,6 +25,11 @@
                             <i class="fas fa-piggy-bank mr-3"></i>
                             <span>Objectifs d'Épargne</span>
                         </a>
+                        <a href="{{route('dashboard.charts')}}" class="flex items-center px-4 py-3 text-black rounded-lg hover:bg-gray-100">
+    <i class="fas fa-chart-line mr-3"></i>
+    <span>Graphiques</span>
+</a>
+
                         <a href="#" class="flex items-center px-4 py-3 text-black rounded-lg hover:bg-gray-100">
                             <i class="fas fa-chart-bar mr-3"></i>
                             <span>Rapports</span>
@@ -98,3 +105,4 @@
                 </div>
             </div>
         </div>
+       

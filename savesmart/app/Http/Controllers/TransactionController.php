@@ -37,6 +37,7 @@ class TransactionController extends Controller
             'amount' => ['required', 'numeric', 'min:0'],
             'category_id' => ['required', 'exists:categories,id'],
         ]);
+        
         $validated['profile_id']=  session('current_profile_id');
         // dd($validated);
         Transaction::create($validated);

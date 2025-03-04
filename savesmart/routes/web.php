@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -14,6 +14,8 @@ require_once __DIR__ . '/auth.php';
 Route::get('/',[HomeController::class,'index']);
 
 Route::get('/dashboard',[DashboardController::class,'index'])->name('user.dashboard');
+// routes of graphs
+Route::get('/dashboard/charts', [ChartController::class, 'index'])->name('dashboard.charts');
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('profiles',ProfileController::class)->only(['index','create','store','show']);
