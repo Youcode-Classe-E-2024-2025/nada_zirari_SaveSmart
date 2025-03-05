@@ -36,8 +36,8 @@ class ProfileController extends Controller
         $profile->pin = $request->pin;
 
         if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
-            $profile->avatar = $avatarPath;
+            $path = $request->file('avatar')->store('avatars', 'public');
+            // Save $path to your profile model
         }
 // dd($profile);
         $profile->save();

@@ -26,12 +26,12 @@
                             <div class="bg-gray-50 p-6 rounded-lg shadow-sm text-center cursor-pointer hover:bg-gray-200 transition-colors profile-item" onclick='openModal(@json($profile))'>
                                 <div class="flex justify-center">
                                     @if ($profile->avatar)
-                                        <img src="{{ asset('storage/' . $profile->avatar) }}" alt="Avatar" class="h-20 w-20 rounded-full object-cover border-4 border-green-200">
-                                    @else
-                                        <div class="h-20 w-20 rounded-full bg-green-300 flex items-center justify-center text-xl text-white">
-                                            {{ strtoupper(substr($profile->name, 0, 1)) }} 
-                                            {{ strtoupper(substr(explode(' ', $profile->name)[1] ?? '', 0, 1)) }}
-                                        </div>
+                                    <img src="{{ Storage::url($profile->avatar) }}" 
+                 alt="{{ $profile->name }}'s avatar"
+                 class="rounded-full h-20 w-20 object-cover shadow-lg">                                    @else
+                 <div class="rounded-full h-20 w-20 bg-gray-200 flex items-center justify-center">
+                <span class="text-2xl text-gray-500">{{ substr($profile->name, 0, 1) }}</span>
+            </div>
                                     @endif
                                 </div>
                                 <p class="mt-4 text-xl font-semibold text-gray-900">{{ $profile->name }}</p>
