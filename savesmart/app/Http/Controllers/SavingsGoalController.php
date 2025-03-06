@@ -32,7 +32,7 @@ class SavingsGoalController extends Controller
     public function store(Request $request)
 {
     $validated = $request->validate([
-        'name' => 'required|string|max:255',
+        'title' => 'required|string|max:255',
         'target_amount' => 'required|numeric|min:0',
         'current_amount' => 'required|numeric|min:0',
     ]);

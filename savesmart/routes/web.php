@@ -23,6 +23,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('transactions',TransactionController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('goals',SavingsGoalController::class);
-    Route::post('/savings-goals', [SavingsGoalController::class, 'store'])->name('savings-goals.store');
+    Route::POST('/savings-goals', [SavingsGoalController::class, 'store'])->name('savings-goals.store');
 
 });

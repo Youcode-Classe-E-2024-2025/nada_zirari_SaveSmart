@@ -4,15 +4,7 @@
     <section class="my-20">
         <div class="max-w-md mx-auto p-4 bg-white rounded-lg shadow-lg">
             <h1 class="text-2xl font-bold mb-6 text-center">Welcome to SaveSmart</h1>
-       <form action="/register" method="post" enctype="multipart/form-data" class="space-y-6">
-              @csrf
-           <div class="mb-4">
-            <label class="block text-gray-700">Profile Picture</label>
-            <input type="file" name="avatar" class="w-full p-2 border rounded" accept="image/*">
-        </div>
-    <!-- Other existing form fields -->
-</form>
-
+            <form action="/register" method="post" class="space-y-6">
                 @csrf
                 <h2 class="text-lg font-semibold mb-2">Profile Information</h2>
                <div class="grid grid-cols-2 gap-4">

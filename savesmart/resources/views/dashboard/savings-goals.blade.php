@@ -13,7 +13,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($savingsGoals as $goal)
                         <div class="bg-white rounded-lg shadow p-6 border">
-                            <h3 class="text-lg font-medium text-gray-900">{{ $goal->name }}</h3>
+                            <h3 class="text-lg font-medium text-gray-900">{{ $goal->title }}</h3>
                             <div class="mt-2">
                                 <div class="relative pt-1">
                                     <div class="flex mb-2 items-center justify-between">
@@ -50,7 +50,7 @@
                 @csrf
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Nom de l'objectif</label>
-                    <input type="text" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    <input type="text" name="title" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Montant cible (€)</label>

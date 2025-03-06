@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('title')->nullable(false);
             $table->decimal('target_amount', 10, 2)->nullable(false);
             $table->decimal('current_amount', 10, 2)->default(0);
-            $table->date('deadline')->nullable();
-            $table->boolean('is_completed')->default(false);
+            // $table->date('deadline')->nullable();
+            // $table->boolean('is_completed')->default(false);
             $table->unsignedBigInteger('user_id')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
