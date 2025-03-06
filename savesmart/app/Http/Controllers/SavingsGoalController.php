@@ -11,11 +11,11 @@ class SavingsGoalController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-   
     {
         $savingsGoals = SavingsGoal::where('user_id', auth()->id())->get();
-        return view('home', compact('savingsGoals'));
+        return view('dashboard.savings-goals', compact('savingsGoals'));
     }
+    
     
 
     /**
