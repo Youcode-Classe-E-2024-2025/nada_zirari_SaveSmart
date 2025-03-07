@@ -22,6 +22,8 @@ Route::get('/reports', [ReportController::class, 'index'])->name('reports.index'
 
 Route::get('/reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');
 Route::get('/reports/excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
+Route::delete('/transactions/{transaction}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+Route::put('/transactions/{transaction}', [TransactionController::class, 'update'])->name('transactions.update');
 
 
 Route::middleware(['auth'])->group(function () {

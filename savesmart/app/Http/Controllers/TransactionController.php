@@ -66,14 +66,26 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        $validated = $request->validate([
+            'description' => 'required',
+            'amount' => 'required|numeric',
+            'type' => 'required|in:income,expense',
+            'category_id' => 'required|exists:categories,id',
+            'transaction_date' => 'required|date'
+        ]);
+    
+        $transaction->update($validated);
+        return redirect()->back()->with('success', 'Transaction modifiée avec succès');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Transaction $transaction)
-    {
-        //
-    }
+{
+    $transaction->delete();
+    return redirect()->back()->with('success', 'Transaction supprimée avec succès');
+}
+
 }

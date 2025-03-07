@@ -29,7 +29,10 @@ public function exportPDF()
 }
 public function exportExcel()
 {
-    $transactions = Transaction::where('user_id', auth()->id())->get();
-    return Excel::download(new TransactionsExport($transactions), 'rapport_financier.xlsx');
+    $user = auth()->user();
+    $profile = $user->profiles()->first();
+    $transactions = $profile->transactions;
+
+    return Excel::download(new TransactionsExport($transactions), 'transactions.xlsx');
 }
 }
