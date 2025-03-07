@@ -7,7 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SavingsGoalController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ReportController;
 require_once __DIR__ . '/auth.php';
 
 
@@ -17,6 +17,12 @@ Route::get('/dashboard',[DashboardController::class,'index'])->name('user.dashbo
 // routes of graphs
 Route::get('/dashboard/charts', [ChartController::class, 'index'])->name('dashboard.charts');
 Route::get('/dashboard/savings-goals', [SavingsGoalController::class, 'index'])->name('dashboard.savings-goals');
+Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+
+
+Route::get('/reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');
+Route::get('/reports/excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('profiles',ProfileController::class)->only(['index','create','store','show']);

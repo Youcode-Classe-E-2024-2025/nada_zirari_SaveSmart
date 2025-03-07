@@ -1,4 +1,11 @@
-<x-app>
+<x-dashboard>
+    <x-slot:head>
+    <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    </x-slot:head>
+
+    <x-slot:script>
+    </x-slot:script>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
@@ -67,4 +74,4 @@
             </form>
         </div>
     </div>
-</x-app>
+</x-dashboard>

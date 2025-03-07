@@ -30,10 +30,11 @@
     <span>Graphiques</span>
 </a>
 
-                        <a href="#" class="flex items-center px-4 py-3 text-black rounded-lg hover:bg-gray-100">
-                            <i class="fas fa-chart-bar mr-3"></i>
-                            <span>Rapports</span>
-                        </a>
+<a href="{{ route('reports.index') }}" class="flex items-center px-4 py-3 text-black rounded-lg hover:bg-gray-100">
+    <i class="fas fa-chart-bar mr-3"></i>
+    <span>Rapports</span>
+</a>
+
                         <a href="#" class="flex items-center px-4 py-3 text-black rounded-lg hover:bg-gray-100">
                             <i class="fas fa-cog mr-3"></i>
                             <span>Paramètres</span>
